@@ -29,4 +29,8 @@ module.exports = class Position {
     equals(pos) {
         return this.row == pos.row && this.column == pos.column
     }
+
+    toString() {
+        return `row: ${this.row} column: ${this.column}`
+    }
 }
