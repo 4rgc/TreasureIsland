@@ -1,9 +1,12 @@
 const Position = require('./Position')
+const solveGraph = require('./solvegraph')
+const Graph = require('./graph')
 
 module.exports = class Map {
     dimensions;
     startingPos;
     mapArray;
+    finishPos;
 
     constructor(dimensions) {
         this.dimensions = dimensions
@@ -11,7 +14,8 @@ module.exports = class Map {
             Math.floor(Math.random() * this.dimensions),
             0
         )
-        this.mapArray = this.createMap(17, 3)
+        this.mapArray = this.createMap(18, 3)
+        this.finishPos = this.findFarthestLocationFromStart().pos
     }
 
     createMap(maxTunnels, maxLength) {
@@ -58,8 +62,20 @@ module.exports = class Map {
         return map;
     }
 
-    findFarthestLocation() {
-        throw new Error("Not Implemented")
+    findFarthestLocationFromStart() {
+        let graph = Graph.fromMapMatrix(this.mapArray, this.startingPos);
+        // Solve graph using Dijkstra's algorithm
+        // starting from '0', which is startingPos
+        let graphSolutions = solveGraph(graph.toAdjacents(), '0')
+
+        let maxDist = 0, maxDistSolution;
+        for(let index in graphSolutions) {
+            if(graphSolutions[index].dist >= maxDist){
+                maxDist = graphSolutions[index].dist;
+                maxDistSolution = index;
+            }
+        }
+        return graph.nodes[maxDistSolution];
     }
 
     print() {
@@ -72,9 +88,6 @@ module.exports = class Map {
         });
     }
 }
-
-
-
 
 function createArray(num, dimensions) {
     var array = [];

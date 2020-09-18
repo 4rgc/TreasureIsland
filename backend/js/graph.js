@@ -1,4 +1,3 @@
-const Postition = require('./position')
 const {getMatrixElement} = require('./util')
 
 module.exports = class Graph {
@@ -23,10 +22,10 @@ module.exports = class Graph {
             return existing;
         }
 
-        let id = this.idCounter++;
+        let id = `${this.idCounter++}`;
         let node = new Node(id);
         node.pos = pos;
-        this.nodes[`${id}`] = node;
+        this.nodes[id] = node;
 
         let rightPos = pos.right(),
             leftPos = pos.left(),
@@ -57,8 +56,17 @@ module.exports = class Graph {
         return node;
     }
 
-    toAdjacentsObject() {
-        throw new Error("Not Implemented")
+    toAdjacents() {
+        let adjObj = {};
+        this.nodes.forEach(node => {
+            let value = {}
+            node.edges.forEach(edge => {
+                value[edge] = 1
+            })
+            adjObj[node.id] = value
+        });
+         
+        return adjObj;
     }
 }
 
