@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+}
+
+td {
+    background-image: url('../media/ground.png');
+    background-size: cover;
+    height: 64px;
+    width: 64px;
+}
+
+#player {
+    background-image: url('../media/pirate1/idle.png');
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+}
