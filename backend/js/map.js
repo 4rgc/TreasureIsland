@@ -1,13 +1,25 @@
-class MapPlane {
+const Position = require('./Position')
+
+module.exports = class Map {
+    dimensions;
+    startingPos;
+    mapArray;
+
     constructor(dimensions) {
         this.dimensions = dimensions
-        this.matrixPlane = this.createMap(17, 3)
+        this.startingPos = new Position(
+            Math.floor(Math.random() * this.dimensions),
+            0
+        )
+        this.mapArray = this.createMap(17, 3)
     }
 
     createMap(maxTunnels, maxLength) {
-        let map = createArray(1, this.dimensions);
-        let currentRow = Math.floor(Math.random() * this.dimensions),
-        currentColumn = 0;
+        const WALL = 1
+        const AIR = 0;
+        let map = createArray(WALL, this.dimensions);
+        let currentRow = this.startingPos.row,
+        currentColumn = this.startingPos.column;
 
         let directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
         let lastDirection = [],
@@ -31,7 +43,7 @@ class MapPlane {
                     ((currentColumn === this.dimensions - 1) && (randomDirection[1] === 1)))
                 { break; }
                 else{
-                    map[currentRow][currentColumn] = 0;
+                    map[currentRow][currentColumn] = AIR;
                     currentRow += randomDirection[0];
                     currentColumn += randomDirection[1];
                     tunnelLength++;
@@ -46,8 +58,12 @@ class MapPlane {
         return map;
     }
 
+    findFarthestLocation() {
+        throw new Error("Not Implemented")
+    }
+
     print() {
-        this.matrixPlane.forEach(row => {
+        this.mapArray.forEach(row => {
             let rowStr = ""
             row.forEach(element => {
                 rowStr += element + " "
@@ -56,6 +72,9 @@ class MapPlane {
         });
     }
 }
+
+
+
 
 function createArray(num, dimensions) {
     var array = [];
@@ -66,4 +85,4 @@ function createArray(num, dimensions) {
         }
     }
     return array;
-}
+};
