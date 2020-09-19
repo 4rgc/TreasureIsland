@@ -6,11 +6,22 @@ body {
     background-color: black;
 }
 
+table {
+
+}
+
 td {
     background-image: url('../media/ground.png');
-    height: 64px;
-    width: 64px;
+    height: 24px;
+    width: 24px;
     background-size: cover;
 
+}
+
+.cactus {
+    background-image: url('../media/cactus1.png');
+    background-size: cover;
+    width: 24px;
+    height: 24px;
 }
 
