@@ -2,28 +2,28 @@ const Position = require('./Position')
 const solveGraph = require('./solvegraph')
 const Graph = require('./graph')
 
-module.exports = class Map {
+const AIR = 0;
+const WALL = 1;
+
+module.exports.Map = class Map {
     dimensions;
     startingPos;
     mapArray;
     finishPos;
 
-    constructor(dimensions) {
-        this.dimensions = dimensions
-        this.startingPos = new Position(
-            Math.floor(Math.random() * this.dimensions),
-            0
-        )
-        this.mapArray = this.createMap(18, 3)
-        this.finishPos = this.findFarthestLocationFromStart().pos
+    constructor(config) {
+        this.dimensions = config.dimensions;
+        this.mapArray = this.createMap(config.maxTunnels, config.maxLength);
+        this.startingPos = this.findStartingPosition();
+        this.finishPos = this.findFarthestLocationFromStart().pos;
     }
 
     createMap(maxTunnels, maxLength) {
         const WALL = 1
         const AIR = 0;
         let map = createArray(WALL, this.dimensions);
-        let currentRow = this.startingPos.row,
-        currentColumn = this.startingPos.column;
+        let currentRow = Math.floor(Math.random() * this.dimensions),
+            currentColumn = Math.floor(Math.random() * this.dimensions);
 
         let directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
         let lastDirection = [],
@@ -62,6 +62,34 @@ module.exports = class Map {
         return map;
     }
 
+    findStartingPosition() {
+        let firstColumnWithAir = this.getFirstColumnWithAir();
+        let rowsWithAir = this.getAirRowsInColumn(firstColumnWithAir);
+        let randomRow = rowsWithAir[Math.floor(Math.random() * rowsWithAir.length)];
+        return new Position(randomRow, firstColumnWithAir);
+    }
+
+    getAirRowsInColumn(column) {
+        let rowsWithAir = [];
+
+        for (let i = 0; i < this.dimensions; i++) {
+            if (this.mapArray[i][column] == AIR) {
+                rowsWithAir.push(i);
+            }
+        }
+        return rowsWithAir;
+    }
+
+    getFirstColumnWithAir() {
+        for (let j = 0; j < this.dimensions; j++) {
+            for (let i = 0; i < this.dimensions; i++) {
+                if (this.mapArray[i][j] == AIR) {
+                    return j;
+                }
+            }
+        }
+    }
+
     findFarthestLocationFromStart() {
         let graph = Graph.fromMapMatrix(this.mapArray, this.startingPos);
         // Solve graph using Dijkstra's algorithm
@@ -86,6 +114,20 @@ module.exports = class Map {
             });
             console.log(rowStr)
         });
+    }
+}
+
+module.exports.MapConfig = class MapConfig {
+    dimensions;
+    maxTunnels;
+    maxLength;
+    trapNumber;
+
+    constructor({dimensions, maxTunnels, maxLength, trapNumber}) {
+        this.dimensions = dimensions;
+        this.maxTunnels = maxTunnels;
+        this.maxLength = maxLength;
+        this.trapNumber = trapNumber;
     }
 }
 

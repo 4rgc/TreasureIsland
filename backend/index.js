@@ -1,8 +1,15 @@
-const Map = require('./js/map')
+const { Map, MapConfig} = require('./js/map')
 const Graph = require('./js/graph')
 const solveGraph = require('./js/solvegraph')
+const colors = require('colors')
 
-let map = new Map(10)
+let mapConfig = new MapConfig({
+    dimensions: 20,
+    maxTunnels: 50,
+    maxLength: 8,
+    trapNumber: 4
+})
+let map = new Map(mapConfig)
 
 let graph = Graph.fromMapMatrix(map.mapArray, map.startingPos)
 
