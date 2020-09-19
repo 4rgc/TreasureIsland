@@ -1,10 +1,10 @@
 (function exportFunctions() {
     function renderMap(matrixPlane) {
         console.log(matrixPlane)
-        let counter = 1;
+        
 
         for(let i = 0; i < matrixPlane.length; i++) {
-
+            let counter = 0;
             let groundRow = document.createElement('tr');
             groundRow.dataset.rowIndex = i;
             document.querySelector('table').appendChild(groundRow);
