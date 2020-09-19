@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Registration</title>
+    <link rel="stylesheet" href="./styles/loginstyle.css"/>
+</head>
+<script src="./scripts/validation.js">
+
+
+  
+  
+  </script>
+<body>
+  
+  <audio id = "player" src = "./media/bensound-ukulele.mp3" type="audio/mp3"></audio>
+    
+    <form class="form">
+    <div class="con">
+    <header class="head-con">
+        <h1 class="login-title">Registration</h1>
+        <div>
+          <button onclick = "document.getElementById('player').play()" style="width: 50px; height: 50px; padding-top: 2px; padding-bottom: 20px; display: contents;"><img src="./media/SoundOn.png" width="50px" height="50px"></button>
+          <button onclick = "document.getElementById('player').pause()" style="width: 50px; height: 50px; padding-top: 2px; padding-bottom: 2px;display: contents;"><img src="./media/SoundOff.png" width="50 px" height="50px"></button>
+          
+       </div> 
+    </header>
+    <br>
+    <br>
+    <div class="field-set">
+
+      <span class="input-item">
+       
+	<i class="fa fa-user-circle"></i>
+      </span>
+        <input type="text" class="form-input" name="username" placeholder="Username" required />
+        <br>
+     
+      <span class="input-item">
+        <i class="fa fa-key"></i>
+      </span>
+        <input type="text" class="form-input" name="email" id="email" placeholder="Email Adress">
+        <br>
+     
+      <span class="input-item">
+        <i class="fa fa-key"></i>
+      </span>
+        <input type="password" class="form-input" name="password" placeholder="Password">
+        
+     
+      
+    
+    </div>
+    <div class="other">  
+        
+        <br> 
+        <button class="link" name="submit" value="Register" onclick="validateEmail(email.value)">All Set to Register</button>
+        <button class="link">Already a member?<a href="./signin.html">Login now</a></button>
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+    </div>
+    </form>
+    <section class="players">
+      <a href="#"><img src="./media/Player1.JPG"></a>  
+      <a href="#"><img src="./media/Player2.JPG" ></a>
+      <a href="#"><img src="./media/Player3.JPG" ></a>
+    
+
+    </section>
+
+</body>
+</html>
