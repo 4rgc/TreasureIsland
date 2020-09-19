@@ -22,10 +22,23 @@ Step 3:
 Now clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button.
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <img align="right" width="300" src="UserMedia/copy-to-clipboard.png" alt="copy URL to clipboard" />
 Step 4:
 Now click on the clipboard button.
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
  Step 5:
  Open a terminal and run the following git command:
