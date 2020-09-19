@@ -11,10 +11,14 @@
     <table>
 
         <script src="front.js"></script>
-        <script src="backend/js/mapplane.js"></script>
+        <script src="backend/js/map.js"></script>
+        <script src="backend/js/util.js"></script>
+        <script src="backend/js/graph.js"></script>
+        <script src="backend/js/solvegraph.js"></script>
+        <script src="backend/js/position.js"></script>
         <script>
-            const mapPlane = new MapPlane(9);
-            renderMap(mapPlane.matrixPlane);
+            const map = new Map(new MapConfig(8,3,2,1));
+            renderMap(map.mapArray);
         </script>
     </table>
 </body>
