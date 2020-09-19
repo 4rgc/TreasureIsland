@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Island</title>
+    <link href="./styles/normalize.css" rel="stylesheet">
+    <link href="./styles/style.css" rel="stylesheet">
+</head>
+<body>
+    <table>
+
+        <script src="front.js"></script>
+        <script src="backend/js/map.js"></script>
+        <script src="backend/js/util.js"></script>
+        <script src="backend/js/graph.js"></script>
+        <script src="backend/js/solvegraph.js"></script>
+        <script src="backend/js/position.js"></script>
+        <script>
+            const map = new Map(new MapConfig(8,3,2,1));
+            renderMap(map.mapArray);
+        </script>
+    </table>
+</body>
+</html>
