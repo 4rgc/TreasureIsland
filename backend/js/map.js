@@ -1,6 +1,7 @@
 const Position = require('./Position')
 const solveGraph = require('./solvegraph')
 const Graph = require('./graph')
+const { createArray } = require('./util')
 
 const AIR = 0;
 const WALL = 1;
@@ -166,14 +167,3 @@ module.exports.MapConfig = class MapConfig {
         this.trapNumber = trapNumber;
     }
 }
-
-function createArray(num, dimensions) {
-    var array = [];
-    for (var i = 0; i < dimensions; i++) {
-        array.push([]);
-        for (var j = 0; j < dimensions; j++) {
-            array[i].push(num);
-        }
-    }
-    return array;
-};
