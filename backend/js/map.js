@@ -7,6 +7,10 @@ const AIR = 0;
 const WALL = 1;
 const TRAP = 2;
 
+module.exports.AIR = AIR;
+module.exports.WALL = WALL;
+module.exports.TRAP = TRAP;
+
 module.exports.Map = class Map {
     dimensions;
     startingPos;
