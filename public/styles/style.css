@@ -1,16 +1,36 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+main {
+    position: relative;
+    overflow-x: auto;
 }
 
 td {
     background-image: url('../media/ground.png');
-    height: 64px;
-    width: 64px;
+    height: 24px;
+    width: 24px;
     background-size: cover;
 
 }
 
+.cactus {
+    background-image: url('../media/cactus1.png');
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+}
+
+#player {
+    background-image: url('../media/pirate1/idle.png');
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+}
