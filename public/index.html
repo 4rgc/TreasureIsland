@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Island</title>
+    <link href="./styles/normalize.css" rel="stylesheet">
+    <link href="./styles/style.css" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <table>
+            <script src="./scripts/front.js"></script>
+            <script src="./scripts/player.js"></script>
+            <script>
+                let player;
+                httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
+                    let map = JSON.parse(mapString);
+                    if(map.error) {
+                        map.error.forEach(error => {
+                            console.error(map.error)
+                        });
+                        return;
+                    }
+
+                    renderMap(map.mapArray);
+                    window.startingPosition = map.startingPos
+                    player = new Player(window.startingPosition)
+                })
+            </script>
+        </table>
+        <div id='player'></div>
+    </main>
+    
+</body>
+</html>
