@@ -217,22 +217,23 @@ button:hover {
 }
 .fun{
     
-    position: relative;
-    animation: sail 10s infinite; 
-    animation-duration: 8s;
-    
-    
-    
-    
+    float:left;
+    position: absolute;
+    animation: sail 10s linear infinite;     
 }
 @keyframes sail{
-    0%{transform: translate(200px); }
-    10%{transform: translate(400px);}
-    20%{transform: translate(600px);}
-    40%{transform: translate(800px);}
-    60%{transform: translate(1000px);}
-    80%{transform: translate(1200px);}
-    100%{transform: translate(1300px);}
+    0%{
+        left:0%;bottom: 0%;
+    }
+    25%{
+        left:25% ;bottom: 0%;
+    }
+    50%{
+        left: 50%;bottom: 0%;
+    }
+    100%{
+        left: 80%; bottom: 0%;
+    }
     
     
 }
@@ -258,5 +259,6 @@ a{
     text-decoration: none;
     color:black;
 }
+
 
 
