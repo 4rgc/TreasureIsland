@@ -1,4 +1,5 @@
-<b>Tresure Island</b>
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+###Treasure Island
 This is the project for the Aye Aye Hackers Hackathon which was taking place from the 18th to the 20nd of September.
 This is a fun and exciting game wherein you have to find the secret treasure. Do you want to try it? Then follow these steps.
 Step 1: Install git on your Mac or PC,[install it]( https://help.github.com/articles/set-up-git/).
