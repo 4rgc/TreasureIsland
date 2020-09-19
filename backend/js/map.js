@@ -1,4 +1,4 @@
-const Position = require('./Position')
+const Position = require('./position')
 const solveGraph = require('./solvegraph')
 const Graph = require('./graph')
 const { createArray } = require('./util')
@@ -122,7 +122,7 @@ module.exports.Map = class Map {
 
         let trapPositions = [];
         path.forEach(id => {
-            let pos = this.graph.nodes[id]?.pos;
+            let pos = this.graph.nodes[id].pos;
             if(!pos)
                 return;
             this.mapArray[pos.row][pos.column] = TRAP;
