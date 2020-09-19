@@ -5,7 +5,7 @@ This is the project for the Aye Aye Hackers Hackathon which was taking place fro
 
 
 This is a fun and exciting game wherein you have to find the secret treasure. Do you want to try it? Then follow these steps.<br>
-Step 1: Install git on your Mac or PC,[install it]( https://help.github.com/articles/set-up-git/).
+Step 1: Install git on your Mac or PC,[by clicking here]( https://help.github.com/articles/set-up-git/).
 <img align="right" width="300" src="UserMedia/fork.png" alt="fork this repository" />
 
 
