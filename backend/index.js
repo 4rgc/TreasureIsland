@@ -7,7 +7,8 @@ let mapConfig = new MapConfig({
     trapNumber: 6
 })
 let map = new Map(mapConfig)
-
+/*
 map.print()
-console.log("Starting pos: " + map.startingPos)
 console.log("Finish pos: " + map.finishPos.toString())
+console.log("Starting pos: " + map.startingPos)
+*/
