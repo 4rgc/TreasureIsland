@@ -1,4 +1,5 @@
-const {getMatrixElement} = require('./util')
+const { getMatrixElement } = require('./util')
+const solveGraph = require('./solvegraph')
 
 module.exports = class Graph {
     nodes = [];
@@ -67,6 +68,18 @@ module.exports = class Graph {
         });
          
         return adjObj;
+    }
+
+    getShortestPath(start, finish) {
+        if(this.nodes[finish] &&
+            this.nodes[start])
+            return solveGraph(this.toAdjacents(), start)[finish];
+        else
+            return [];
+}
+
+    getNodeFromPos(position) {
+        return this.nodes.find(node => node.pos.equals(position));
     }
 }
 

@@ -4,23 +4,27 @@ const Graph = require('./graph')
 
 const AIR = 0;
 const WALL = 1;
+const TRAP = 2;
 
 module.exports.Map = class Map {
     dimensions;
     startingPos;
     mapArray;
     finishPos;
+    maxTraps;
 
     constructor(config) {
+        this.maxTraps = config.trapNumber;
         this.dimensions = config.dimensions;
         this.mapArray = this.createMap(config.maxTunnels, config.maxLength);
         this.startingPos = this.findStartingPosition();
+        this.graph = Graph.fromMapMatrix(this.mapArray, this.startingPos)
+
         this.finishPos = this.findFarthestLocationFromStart().pos;
+        this.setTraps();
     }
 
     createMap(maxTunnels, maxLength) {
-        const WALL = 1
-        const AIR = 0;
         let map = createArray(WALL, this.dimensions);
         let currentRow = Math.floor(Math.random() * this.dimensions),
             currentColumn = Math.floor(Math.random() * this.dimensions);
@@ -91,10 +95,9 @@ module.exports.Map = class Map {
     }
 
     findFarthestLocationFromStart() {
-        let graph = Graph.fromMapMatrix(this.mapArray, this.startingPos);
         // Solve graph using Dijkstra's algorithm
         // starting from '0', which is startingPos
-        let graphSolutions = solveGraph(graph.toAdjacents(), '0')
+        let graphSolutions = solveGraph(this.graph.toAdjacents(), '0')
 
         let maxDist = 0, maxDistSolution;
         for(let index in graphSolutions) {
@@ -103,7 +106,40 @@ module.exports.Map = class Map {
                 maxDistSolution = index;
             }
         }
-        return graph.nodes[maxDistSolution];
+        return this.graph.nodes[maxDistSolution];
+    }
+
+    setTraps() {
+        let path = this.graph.getShortestPath(
+            this.graph.getNodeFromPos(this.startingPos).id,
+            this.graph.getNodeFromPos(this.finishPos).id
+        );
+
+        let trapPositions = [];
+        path.forEach(id => {
+            let pos = this.graph.nodes[id]?.pos;
+            if(!pos)
+                return;
+            this.mapArray[pos.row][pos.column] = TRAP;
+            let graph = Graph.fromMapMatrix(this.mapArray, this.startingPos);
+            if(graph.getNodeFromPos(this.finishPos) == undefined) {
+                this.mapArray[pos.row][pos.column] = AIR;
+            }
+            else {
+                trapPositions.push(pos);
+                this.graph = graph;
+            }
+        });
+
+        while(trapPositions.length > this.maxTraps) {
+            let randPos = trapPositions[Math.floor(Math.random() * (trapPositions.length-1))]
+            this.mapArray[randPos.row][randPos.column] = AIR;
+            trapPositions.splice(trapPositions.indexOf(randPos), 1);
+        }
+    }
+
+    getTile(pos) {
+        return this.mapArray[pos.row][pos.column];
     }
 
     print() {
