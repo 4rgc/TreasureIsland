@@ -1,4 +1,4 @@
-const Position = require('./Position')
+const Position = require('./position')
 const solveGraph = require('./solvegraph')
 const Graph = require('./graph')
 const { createArray } = require('./util')
