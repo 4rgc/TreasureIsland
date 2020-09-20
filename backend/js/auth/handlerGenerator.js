@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser');
 let jwt = require('jsonwebtoken');
 let config = require('./config');
 let middleware = require('./middleware');
@@ -19,12 +18,12 @@ class HandlerGenerator {
                 }
                 );
                 // return the JWT token for the future API calls
-                res.setHeader('Set-Cookie', `access_token=${token}`)
-                console.log('set the token')
+                res.setHeader('Set-Cookie', `access_token=${token}; HttpOnly; Path=/`);
 
                 res.json({
                     success: true,
-                    message: 'Authentication successful!'
+                    message: 'Authentication successful!',
+                    token: token
                 });
             } else {
                 res.statusCode = 403
