@@ -1,7 +1,6 @@
 (function exportFunctions() {
     function renderMap(matrixPlane) {
         console.log(matrixPlane)
-        
 
         for(let i = 0; i < matrixPlane.length; i++) {
             let counter = 0;
@@ -16,9 +15,7 @@
                     groundTile.dataset.type = 'path'
                 } else {
                     const cactus = document.createElement('div');
-                    const cactusImages = ['../media/cactus1.png', '../media/cactus2.png', '../media/cactus3.png', '../media/bush1.png', '../media/stones1.png', '../media/tree1.png']
                     cactus.setAttribute("class", "cactus");
-                    cactus.setAttribute('style', `background-image: url("${cactusImages[Math.floor(Math.random() * 6)]}")`)
                     groundTile.dataset.type = 'obstacle';
                     groundTile.appendChild(cactus);
                 }
@@ -40,13 +37,26 @@
         xmlHttp.send(null);
     }
 
+    function httpPostAsync(url, message, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xmlHttp.send(message);
+    }
+
     if(typeof module !== 'undefined' && module.exports) {
         module.exports = {
-            httpGet,
+            httpGetAsync,
+            httpPostAsync,
             renderMap
         }
     } else {
         window.httpGetAsync = httpGetAsync;
+        window.httpPostAsync = httpPostAsync;
         window.renderMap = renderMap;
     }
 })()
