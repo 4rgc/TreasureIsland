@@ -59,6 +59,7 @@ class Player {
     const title = document.createElement('h2');
     const playAgainButton = document.createElement('button')
     playAgainButton.setAttribute('type', 'reset')
+    playAgainButton.setAttribute('id', 'playAgain')
     playAgainButton.innerText = 'Play Again!'
     overlay.appendChild(title)
     overlay.appendChild(playAgainButton)
@@ -77,14 +78,28 @@ class Player {
 
     }
 
+    playAgain() {
+        document.querySelector('#playAgain').addEventListener('click', function() {
+            const table = document.querySelector('table')
+            const player = document.querySelector('#player');
+            while (table.firstChild) {
+                table.removeChild(table.firstChild);
+            }
+            
+            player.removeAttribute('style');
+            mapCall();
+        });
+    }
+
     dig() {
         if(this.position.row == window.finishingPosition.row && this.position.column == window.finishingPosition.column) {
             const overlay = this.winLose('win')
-            
+            this.playAgain()
         } else {
             this.spade--;
             if(!this.spade) {
                 const overlay = this.winLose('lose')
+                this.playAgain()
             }
         }
     }
