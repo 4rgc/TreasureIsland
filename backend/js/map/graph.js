@@ -1,4 +1,4 @@
-const { getMatrixElement } = require('./util')
+const { getMatrixElement } = require('../util')
 const solveGraph = require('./solvegraph')
 
 module.exports = class Graph {
