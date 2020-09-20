@@ -51,12 +51,41 @@ class Player {
         this.renderNewPosition(this.player);
     }
 
+    winLose(status) {
+        
+    const player = document.querySelector('#player')
+    const viewport = document.querySelector('table');
+    const overlay = document.createElement('div');
+    const title = document.createElement('h2');
+    const playAgainButton = document.createElement('button')
+    playAgainButton.setAttribute('type', 'reset')
+    playAgainButton.innerText = 'Play Again!'
+    overlay.appendChild(title)
+    overlay.appendChild(playAgainButton)
+    overlay.setAttribute('class', 'overlay')
+    viewport.appendChild(overlay);
+    player.setAttribute('style', 'display: none')
+
+    if(status === 'win') {
+        overlay.setAttribute('id', 'winning-screen')
+        title.innerText = 'Ye found the treasure!'
+    } else if (status === 'lose') {
+        overlay.setAttribute('id', 'losing-screen')
+        title.innerText = 'Ye broke yer spade, numbskull!'
+    }
+     return overlay;
+
+    }
+
     dig() {
         if(this.position.row == window.finishingPosition.row && this.position.column == window.finishingPosition.column) {
-            console.log('winner!')
+            const overlay = this.winLose('win')
+            
         } else {
             this.spade--;
-            if(!this.spade) console.log('loser!')
+            if(!this.spade) {
+                const overlay = this.winLose('lose')
+            }
         }
     }
 }
