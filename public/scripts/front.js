@@ -52,10 +52,6 @@
 
     function mapCall() {
 
-        if(document.querySelector('.overlay')) {
-            
-        }
-
         httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
             let map = JSON.parse(mapString);
             // Check for API error
@@ -78,19 +74,33 @@
         })
     }
 
+    function renderSea() {
+        const backgroundImages = ["../media/water0.png", "../media/water1.png"]
+            let backgroundIndex = 0;
+
+            window.setInterval(() => {
+                document.querySelector("body").style.backgroundImage = `url(${backgroundImages[backgroundIndex % backgroundImages.length]})`
+                backgroundIndex += 1;
+            }, 1000)
+    }
+
     if(typeof module !== 'undefined' && module.exports) {
         module.exports = {
             httpGetAsync,
             httpPostAsync,
             renderMap,
-            mapCall
+            mapCall,
+            renderSea,
         }
     } else {
         window.httpGetAsync = httpGetAsync;
         window.httpPostAsync = httpPostAsync;
         window.renderMap = renderMap;
         window.mapCall = mapCall;
+        window.renderSea = renderSea;
     }
+
+    
 
     
 })()
