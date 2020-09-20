@@ -5,15 +5,15 @@
     <title>Registration</title>
     <link rel="stylesheet" href="./styles/loginstyle.css"/>
     <script src="./scripts/validation.js"></script>
-    <script src="./scripts/registration.js"></script>
     <script src="./scripts/front.js"></script>
+    <script src="./scripts/registration.js"></script>
    
 </head>
 <body>
   
   <audio id = "player" src = "./media/bensound-ukulele.mp3" type="audio/mp3"></audio>
     
-    <form class="form">
+    <form class="form" id="register-form">
     <div class="con">
     <header class="head-con">
         <h1 class="login-title">Registration</h1>
@@ -52,8 +52,8 @@
     <div class="other">  
         
         <br> 
-        <button class="link" name="submit" value="Register" id="register" onclick="registerClicked()">All Set to Register</button>
-        <button class="link">Already a member?<a href="./signin.html">Login now</a></button>
+        <button class="link" type="submit" value="Register" id="register" >All Set to Register</button>
+        <button class="link" type="button">Already a member?<a href="./signin.html">Login now</a></button>
         <i class="fa fa-user-plus" aria-hidden="true"></i>
     </div>
     </form>
