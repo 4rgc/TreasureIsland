@@ -6,8 +6,20 @@
     <title>Treasure Island</title>
     <link href="./styles/normalize.css" rel="stylesheet">
     <link href="./styles/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
 </head>
 <body>
+    <aside>
+        <h1>Treasure Island</h1>
+        <p>
+            Many have heard the tale of Ol' Willy Russell and his buried treasure!<br>
+            The tale goes that Willy landed on treasure island and walked for leagues<br>
+            to find a place for his spoils.<br>
+
+            After years of searching ye've found yerself washed up on it's cursed shores<br>
+            can ye follow in the footsteps of Ol' Willy and find his fabled riches?
+        </p>
+    </aside>
     <main>
         <table cellspacing="0" cellpadding="0">
             <script src="./scripts/front.js"></script>
@@ -25,6 +37,7 @@
 
                     renderMap(map.mapArray);
                     window.startingPosition = map.startingPos
+                    window.finishingPosition = map.finishPos
                     player = new Player(window.startingPosition)
                 })
                 document.onkeydown = function(e) { 
@@ -40,6 +53,9 @@
                             break; 
                         case 40: 
                             player.down(); 
+                            break; 
+                        case 32: 
+                            player.dig(); 
                             break; 
                     }
                 }

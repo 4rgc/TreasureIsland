@@ -3,6 +3,7 @@
 class Player {
     constructor(position) {
         this.position = position;
+        this.spade = 25;
         this.player = document.querySelector('#player')
         this.renderNewPosition(this.player);
     }
@@ -48,6 +49,15 @@ class Player {
         }
         this.position.row++
         this.renderNewPosition(this.player);
+    }
+
+    dig() {
+        if(this.position.row == window.finishingPosition.row && this.position.column == window.finishingPosition.column) {
+            console.log('winner!')
+        } else {
+            this.spade--;
+            if(!this.spade) console.log('loser!')
+        }
     }
 }
 
