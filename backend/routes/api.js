@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 const url = require('url')
 const querystring = require('querystring')
-const { Map, MapConfig } = require('../js/map')
-const { validateQueryParams } = require('../js/util')
+const { Map, MapConfig } = require('../js/map/map')
+const { validateQueryParams } = require('../js/util');
+const middleware = require('../js/auth/middleware');
 
 /* GET users listing. */ 
-router.get('/map', function(req, res, next) {
+router.get('/map', middleware.checkToken, function(req, res, next) {
     let parsedUrl = url.parse(req.url);
     let parsedQs = querystring.parse(parsedUrl.query);
 

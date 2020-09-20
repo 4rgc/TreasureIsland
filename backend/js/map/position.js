@@ -19,11 +19,11 @@ module.exports = class Position {
     }
 
     up() {
-        return new Position(this.row + 1, this.column)
+        return new Position(this.row - 1, this.column)
     }
 
     down() {
-        return new Position(this.row - 1, this.column)
+        return new Position(this.row + 1, this.column)
     }
 
     equals(pos) {
