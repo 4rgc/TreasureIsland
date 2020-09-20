@@ -8,6 +8,7 @@ const middleware = require('../js/auth/middleware')
 /* GET home page. */
 router.post('/authorize', handlers.login);
 router.get('/deauthorize', middleware.checkToken, logout)
+router.post('/register', handlers.register)
 
 function logout (req, res, next) {
     let token = req.cookies['access_token']

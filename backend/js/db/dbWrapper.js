@@ -1,7 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://api:YaMFtPQuP8C2ObW2@cluster0.u5xks.mongodb.net/TreasureIsland?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
+let database;
+client.connect().then(db => database = db)
 
 /*
 client.connect(err => {
@@ -16,21 +17,31 @@ client.connect(err => {
 module.exports = class DbWrapper {
     static getUserByUsername(username) {
         return new Promise((resolve, reject) => {
-            client.connect().then(db => {
-                db.db('TreasureIsland').collection('inventory')
-                    .find({username: username})
-                    .toArray((err, res) => {
-                    if(err)
-                        reject(err)
-                    resolve(res);
-                });
+            database.db('TreasureIsland').collection('inventory')
+                .find({username: username})
+                .toArray((err, res) => {
+                if(err)
+                    reject(err)
+                resolve(res);
+            });
+        })
+    }
+
+    static getUserByEmail(email) {
+        return new Promise((resolve, reject) => {
+            database.db('TreasureIsland').collection('inventory')
+                .find({email: email})
+                .toArray((err, res) => {
+                if(err)
+                    reject(err)
+                resolve(res);
             });
         })
     }
 
     static async insertUser({username, pwHash, email}) {
-        return client.connect().then((db) => {
-            db.db('TreasureIsland').collection('inventory')
+        return new Promise((resolve, reject) => {
+            database.db('TreasureIsland').collection('inventory')
                     .insertOne(
                         {
                             username: username,
@@ -38,8 +49,8 @@ module.exports = class DbWrapper {
                             email: email
                         }, (err) => {
                             if(err)
-                                throw err
-                            client.close();
+                                reject(err)
+                            resolve()
                     }
             );
         });
