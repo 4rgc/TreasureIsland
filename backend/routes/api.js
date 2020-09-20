@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const url = require('url')
 const querystring = require('querystring')
-const { Map, MapConfig } = require('../js/map')
+const { Map, MapConfig } = require('../js/map/map')
 const { validateQueryParams } = require('../js/util')
 
 /* GET users listing. */ 

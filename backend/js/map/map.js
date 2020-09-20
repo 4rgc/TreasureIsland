@@ -1,7 +1,7 @@
 const Position = require('./position')
 const solveGraph = require('./solvegraph')
 const Graph = require('./graph')
-const { createArray } = require('./util')
+const { createArray } = require('../util')
 
 const AIR = 0;
 const WALL = 1;
