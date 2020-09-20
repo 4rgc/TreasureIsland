@@ -53,4 +53,3 @@ For example:
 git clone https://github.com/4rgc/TreasureIsland.git
 ```
 Great! Now you have copied the code of TreasureIsland into your computer. Have fun!
-
