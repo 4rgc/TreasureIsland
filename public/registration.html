@@ -4,6 +4,8 @@
     <meta charset="utf-8"/>
     <title>Registration</title>
     <link rel="stylesheet" href="./styles/loginstyle.css"/>
+    <script src="./scripts/validation.js"></script>
+   
 </head>
 <body>
   
@@ -33,14 +35,14 @@
       <span class="input-item">
         <i class="fa fa-key"></i>
       </span>
-        <input type="text" class="form-input" name="email" id="email" placeholder="Email Adress">
+        <input type="text" class="form-input" name="email" id="email" placeholder="Email Adress" required/>
         <br>
      
       <span class="input-item">
         <i class="fa fa-key"></i>
       </span>
-        <input type="password" class="form-input" name="password" placeholder="Password">
-        
+        <input type="password" class="form-input" name="password" id="password" placeholder="Password"  required />
+       
      
       
     
@@ -48,7 +50,7 @@
     <div class="other">  
         
         <br> 
-        <button class="link" name="submit" value="Register" id="register">All Set to Register</button>
+        <button class="link" name="submit" value="Register" id="register" onclick="validate(email.value,password.value)">All Set to Register</button>
         <button class="link">Already a member?<a href="./signin.html">Login now</a></button>
         <i class="fa fa-user-plus" aria-hidden="true"></i>
     </div>
