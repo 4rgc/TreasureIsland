@@ -1,0 +1,61 @@
+body {
+    background-image: linear-gradient(-225deg, #26d1f0c0 0%,  #0689b1 100%);
+    background-image: linear-gradient(to top, #26d1f0c0 0%, #0689b1 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+aside{
+    border-radius: 5px;
+    padding: 2%;
+    box-shadow: 0 9px 50px black(20, 67%, 75%, 0.31);
+    background-image: linear-gradient(to bottom right, #FF0000, #fa453ee8);
+}
+
+main {
+    position: relative;
+    overflow-x: auto;
+}
+
+table {
+    border: none;
+}
+
+td {
+    background-image: url('../media/ground.png');
+    height: 32px;
+    width: 32px;
+    background-size: cover;
+
+}
+
+.cactus {
+    /*background-image: url('../media/cactus1.png');*/
+    background-size: cover;
+    width: auto;
+    height: 29px;
+}
+
+#player {
+    background-image: url('../media/pirate1/idle.png');
+    background-size: cover;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+}
+
+h1 {
+    font-family: "Pirata One";
+    font-size: 42px;
+    color: white;
+}
+
+p {
+    font-family: "Pirata One";
+    color: white; 
+}
