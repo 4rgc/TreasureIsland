@@ -47,23 +47,33 @@ class HandlerGenerator {
     }
 
     register(req, res) {
-        let username = res.body.username;
-        let password = res.body.password;
-        let email = res.body.email;
+        let username = req.body.username;
+        let password = req.body.password;
+        let email = req.body.email;
+
+        console.log('un: ' +  username)
+        console.log('pw: ' +  password)
+        console.log('email: ' +  email)
 
         if(username && password && email) {
+            console.log('parameters not null')
             DbWrapper.getUserByUsername(username).then(resultArray => {
-                if(resultArray.length == 0)
-                    return DbWrapper.getUserByEmail(email).then(resultArray => {
-                        if(resultArray.length == 0)
+                if(resultArray.length == 0){
+                    console.log('username not found')
+                    return DbWrapper.getUserByEmail(email).then(resultArray2 => {
+                        if(resultArray2.length == 0) {
+                            console.log('email not found')
                             return true;
-                    })
+                        }
+                        return false;
+                    })}
                 return false;
             }).then(shouldCreate => {
-                if(shouldCreate)
+                if(shouldCreate){
+                    console.log('gotta create')
                     DbWrapper.insertUser({
                         username: username,
-                        password: password,
+                        pwHash: getHashedPassword(password),
                         email: email
                     }).then(() => {
                         res.json(
@@ -71,7 +81,7 @@ class HandlerGenerator {
                                 success: true
                             }
                         )
-                })
+                })}
                 else
                     res.json(
                         {
