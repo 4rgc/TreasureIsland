@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://api:YaMFtPQuP8C2ObW2@cluster0.u5xks.mongodb.net/TreasureIsland?retryWrites=true&w=majority";
+const uri = "uri";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 let database;
 client.connect().then(db => database = db)
