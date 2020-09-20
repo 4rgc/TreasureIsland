@@ -5,6 +5,8 @@
     <title>Registration</title>
     <link rel="stylesheet" href="./styles/loginstyle.css"/>
     <script src="./scripts/validation.js"></script>
+    <script src="./scripts/registration.js"></script>
+    <script src="./scripts/front.js"></script>
    
 </head>
 <body>
@@ -29,7 +31,7 @@
        
 	<i class="fa fa-user-circle"></i>
       </span>
-        <input type="text" class="form-input" name="username" placeholder="Username" required />
+        <input type="text" class="form-input" name="username" placeholder="Username" id="username" required />
         <br>
      
       <span class="input-item">
@@ -50,7 +52,7 @@
     <div class="other">  
         
         <br> 
-        <button class="link" name="submit" value="Register" id="register" onclick="validate(email.value,password.value)">All Set to Register</button>
+        <button class="link" name="submit" value="Register" id="register" onclick="registerClicked()">All Set to Register</button>
         <button class="link">Already a member?<a href="./signin.html">Login now</a></button>
         <i class="fa fa-user-plus" aria-hidden="true"></i>
     </div>

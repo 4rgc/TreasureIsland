@@ -1,15 +1,14 @@
+
+
 function registerClicked() {
-    validateEmail();
-}
+  let username = document.getElementById('username').value;
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
 
-function validateEmail(eval) {
- if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(eval))
-  {
-    return (true)
-  }
-    return (false)
-}
-
-document.onload = () => {
-    document.getElementById('register').onclick = () => {};//registerClicked;
+  httpPostAsync('/login/register', `username=${username}&email=${email}&password=${password}`, (res) => {
+      let obj = JSON.parse(res);
+        if(obj['success']){
+            window.location = '/signin.html'
+        }
+  })
 }

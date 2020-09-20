@@ -18,12 +18,16 @@ function hide() {
 function logInClicked() {
     let username = document.getElementById('txt-input').value;
     let password = document.getElementById('pwd').value;
+    console.log('got the elements')
     httpPostAsync('/login/authorize', `username=${username}&password=${password}`, (res) => {
+        console.log("got the response: " + res)
         let obj = JSON.parse(res);
         if(obj['success']){
+            console.log('looks like you know the password...')
             window.location = '/index.html'
         }
     })
+    return false;
 }
 document.onload = () => {
     document.getElementById("eye").addEventListener("click", function () {
