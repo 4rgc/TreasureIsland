@@ -56,27 +56,25 @@
             
         }
 
-        httpPostAsync('/login/authorize', 'username=admin&password=password', () => {
-            httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
-                let map = JSON.parse(mapString);
-                // Check for API error
-                if(map.error) {
-                    map.error.forEach(error => {
-                        console.error(map.error)
-                    });
-                    return;
-                }
-                // Check for token error
-                if(map.success !== undefined) {
-                    console.error(map.message);
-                    return;
-                }
+        httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
+            let map = JSON.parse(mapString);
+            // Check for API error
+            if(map.error) {
+                map.error.forEach(error => {
+                    console.error(map.error)
+                });
+                return;
+            }
+            // Check for token error
+            if(map.success !== undefined) {
+                console.error(map.message);
+                return;
+            }
 
-                renderMap(map.mapArray);
-                window.startingPosition = map.startingPos
-                window.finishingPosition = map.finishPos
-                player = new Player(window.startingPosition)
-            })
+            renderMap(map.mapArray);
+            window.startingPosition = map.startingPos
+            window.finishingPosition = map.finishPos
+            player = new Player(window.startingPosition)
         })
     }
 
