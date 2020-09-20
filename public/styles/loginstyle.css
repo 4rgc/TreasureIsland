@@ -7,10 +7,7 @@
 }
 
 body {
-    background-image: linear-gradient(-225deg, #26d1f0c0 0%,  #0689b1 100%);
-    background-image: linear-gradient(to top, #26d1f0c0 0%, #0689b1 100%);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-image: url('../media/water0.png');
     font-family: 'Times New Roman', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
     font-family: 'Arial', sans-serif;

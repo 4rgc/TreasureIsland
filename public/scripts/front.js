@@ -75,7 +75,7 @@
     }
 
     function renderSea() {
-        const backgroundImages = ["../media/water0.png", "../media/water1.png"]
+        const backgroundImages = ["./media/water0.png", "./media/water1.png"]
             let backgroundIndex = 0;
 
             window.setInterval(() => {
