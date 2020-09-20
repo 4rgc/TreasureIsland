@@ -26,43 +26,52 @@
             <script src="./scripts/player.js"></script>
             <script>
                 let player;
-                httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
-                    let map = JSON.parse(mapString);
-                    if(map.error) {
-                        map.error.forEach(error => {
-                            console.error(map.error)
-                        });
-                        return;
-                    }
+                // Temporary log in for test purposes
+                httpPostAsync('/login/authorize', 'username=admin&password=password', () => {
+                    httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
+                        let map = JSON.parse(mapString);
+                        // Check for API error
+                        if(map.error) {
+                            map.error.forEach(error => {
+                                console.error(map.error)
+                            });
+                            return;
+                        }
+                        // Check for token error
+                        if(map.success !== undefined) {
+                            console.error(map.message);
+                            return;
+                        }
 
-                    renderMap(map.mapArray);
-                    window.startingPosition = map.startingPos
-                    window.finishingPosition = map.finishPos
-                    player = new Player(window.startingPosition)
+                        renderMap(map.mapArray);
+                        window.startingPosition = map.startingPos
+                        window.finishingPosition = map.finishPos
+                        player = new Player(window.startingPosition)
+                    })
                 })
-                document.onkeydown = function(e) { 
-                    switch (e.keyCode) { 
-                        case 38: 
-                            player.up(); 
-                            break; 
-                        case 37: 
-                            player.left(); 
-                            break; 
-                        case 39: 
-                            player.right(); 
-                            break; 
-                        case 40: 
-                            player.down(); 
-                            break; 
-                        case 32: 
-                            player.dig(); 
-                            break; 
+                document.onkeydown = function(e) {
+                    switch (e.keyCode) {
+                        case 38:
+                            player.up();
+                            break;
+                        case 37:
+                            player.left();
+                            break;
+                        case 39:
+                            player.right();
+                            break;
+                        case 40:
+                            player.down();
+                            break;
+                        case 32:
+                            player.dig();
+                            break;
                     }
                 }
             </script>
         </table>
         <div id='player'></div>
     </main>
-    
+
 </body>
 </html>
