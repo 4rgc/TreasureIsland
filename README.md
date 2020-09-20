@@ -17,7 +17,7 @@ This will create a copy of this repository in your account.
 
 ## Clone the repository
 
-<img align="right" width="300" src="UserMedia/clone.png" alt="clone this repository" />
+<img align="right" width="300" src="public/media/clone.png" alt="clone this repository" />
 Step 3:
 Now clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button.
 <br>
