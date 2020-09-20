@@ -15,7 +15,9 @@
                     groundTile.dataset.type = 'path'
                 } else {
                     const cactus = document.createElement('div');
+                    const obstacleImages = ['../media/cactus1.png', '../media/cactus2.png','../media/cactus3.png','../media/bush1.png','../media/stones1.png','../media/tree1.png',]
                     cactus.setAttribute("class", "cactus");
+                    cactus.setAttribute("style", `background-image: url(${obstacleImages[Math.floor(Math.random() * 6)]})`);
                     groundTile.dataset.type = 'obstacle';
                     groundTile.appendChild(cactus);
                 }
