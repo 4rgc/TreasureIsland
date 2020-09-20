@@ -50,15 +50,49 @@
         xmlHttp.send(message);
     }
 
+    function mapCall() {
+
+        if(document.querySelector('.overlay')) {
+            
+        }
+
+        httpPostAsync('/login/authorize', 'username=admin&password=password', () => {
+            httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
+                let map = JSON.parse(mapString);
+                // Check for API error
+                if(map.error) {
+                    map.error.forEach(error => {
+                        console.error(map.error)
+                    });
+                    return;
+                }
+                // Check for token error
+                if(map.success !== undefined) {
+                    console.error(map.message);
+                    return;
+                }
+
+                renderMap(map.mapArray);
+                window.startingPosition = map.startingPos
+                window.finishingPosition = map.finishPos
+                player = new Player(window.startingPosition)
+            })
+        })
+    }
+
     if(typeof module !== 'undefined' && module.exports) {
         module.exports = {
             httpGetAsync,
             httpPostAsync,
-            renderMap
+            renderMap,
+            mapCall
         }
     } else {
         window.httpGetAsync = httpGetAsync;
         window.httpPostAsync = httpPostAsync;
         window.renderMap = renderMap;
+        window.mapCall = mapCall;
     }
+
+    
 })()
