@@ -97,6 +97,8 @@ class Player {
             this.playAgain()
         } else {
             this.spade--;
+            const currentPos = document.querySelector(`tr[data-row-index="${this.position.row}"] > td[data-index="${this.position.column}"]`);
+            currentPos.style.backgroundImage = 'url("../media/PNG/road_5.png")'
             if(!this.spade) {
                 const overlay = this.winLose('lose')
                 this.playAgain()

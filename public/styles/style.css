@@ -52,18 +52,19 @@ td {
 h1 {
     font-family: "Pirata One";
     font-size: 42px;
-    color: white;
+    color: gold;
 }
 
 h2 {
     font-family: "Pirata One";
     font-size: 36px;
-    color: white;
+    color: gold;
 }
 
 p {
     font-family: "Pirata One";
-    color: white; 
+    color: gold; 
+    font-size: 20px;
 }
 
 .overlay {
@@ -84,4 +85,25 @@ p {
 
 #losing-screen {
     background-color: blue;
+}
+
+#signOut{
+
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+button {
+    
+    padding: 5px 10px;
+    background-color: red;
+    color: gold;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: gold;
+    color: red;
+    transition: 20ms;
 }
