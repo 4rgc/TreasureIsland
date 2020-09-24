@@ -19,7 +19,7 @@ function logInClicked() {
     let username = document.getElementById('txt-input').value;
     let password = document.getElementById('pwd').value;
     console.log('got the elements')
-    httpPostAsync('http://api.treasureisland.tech/api/login', `username=${username}&password=${password}`, (res) => {
+    httpPostAsync('http://api.treasureisland.tech/login/authorize', `username=${username}&password=${password}`, (res) => {
         console.log("got the response: " + res)
         let obj = JSON.parse(res);
         if(obj['success']){
