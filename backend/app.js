@@ -17,7 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 var corsOptions = {
-  origin: 'http://api.treasureisland.tech',
+  origin: 'http://treasureisland.tech',
   optionsSuccessStatus: 200
 }
 
