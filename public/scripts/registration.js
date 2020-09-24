@@ -8,7 +8,7 @@ window.onload = () => {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   console.log('got the elements')
-  httpPostAsync('/login/register', `username=${username}&email=${email}&password=${password}`, (res) => {
+  httpPostAsync('http://api.treasureisland.tech/login/register', `username=${username}&email=${email}&password=${password}`, (res) => {
     console.log("got the response: " + res)
       let obj = JSON.parse(res);
         if(obj['success']){

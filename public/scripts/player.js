@@ -18,7 +18,7 @@ class Player {
     right() {
         const nextPos = document.querySelector(`tr[data-row-index="${this.position.row}"] > td[data-index="${this.position.column + 1}"]`);
         if(nextPos.getAttribute('data-type') === 'obstacle'){
-            throw new Error('Cactus!')
+            return;
         }
         this.position.column++
         this.renderNewPosition(this.player);
@@ -27,7 +27,7 @@ class Player {
     left() {
         const nextPos = document.querySelector(`tr[data-row-index="${this.position.row}"] > td[data-index="${this.position.column - 1}"]`);
         if(nextPos.getAttribute('data-type') === 'obstacle'){
-            throw new Error('Cactus!')
+            return;
         }
         this.position.column--
         this.renderNewPosition(this.player);
@@ -36,7 +36,7 @@ class Player {
     up() {
         const nextPos = document.querySelector(`tr[data-row-index="${this.position.row - 1}"] > td[data-index="${this.position.column}"]`);
         if(nextPos.getAttribute('data-type') === 'obstacle'){
-            throw new Error('Cactus!')
+            return;
         }
         this.position.row--
         this.renderNewPosition(this.player);
@@ -45,7 +45,7 @@ class Player {
     down() {
         const nextPos = document.querySelector(`tr[data-row-index="${this.position.row + 1}"] > td[data-index="${this.position.column}"]`);
         if(nextPos.getAttribute('data-type') === 'obstacle'){
-            throw new Error('Cactus!')
+            return;
         }
         this.position.row++
         this.renderNewPosition(this.player);

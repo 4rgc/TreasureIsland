@@ -52,7 +52,7 @@
 
     function mapCall() {
 
-        httpGetAsync('/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
+        httpGetAsync('http://api.treasureisland.tech/api/map?d=20&tun=50&len=8&trp=4', (mapString) => {
             let map = JSON.parse(mapString);
             // Check for API error
             if(map.error) {
