@@ -22,7 +22,7 @@ class HandlerGenerator {
                         }
                         );
                         // return the JWT token for the future API calls
-                        res.setHeader('Set-Cookie', `access_token=${token}; HttpOnly; Path=treasureisland.tech`);
+                        res.setHeader('Set-Cookie', `access_token=${token}; HttpOnly; Path=/; Domain:treasureisland.tech`);
                         res.json({
                             success: true,
                             message: 'Authentication successful!',
