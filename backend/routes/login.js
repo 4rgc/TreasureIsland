@@ -15,7 +15,7 @@ function logout (req, res, next) {
     console.log(token);
 
     // return the JWT token for the future API calls
-    res.clearCookie('access_token', { path: '/' });
+    res.clearCookie('access_token', { path: 'http://treasureisland.tech/' });
 
     res.json({
         success: true,
